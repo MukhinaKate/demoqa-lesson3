@@ -25,12 +25,26 @@ public class PracticeFormTest {
         $("#firstName").setValue("Kate");
         $("#lastName").setValue("M");
         $("#userEmail").setValue("test@test.com");
-        //$("input[value='Female']").click(); // не работает
+        $("label[for='gender-radio-2']").click();
         $("#userNumber").setValue("88057001144");
+
+        //Date of Birth
+        $("#dateOfBirthInput").click();
+        // Выбор года
+        $(".react-datepicker__year-select").selectOption("2024");
+
+        // Выбор месяца
+        $(".react-datepicker__month-select").selectOption("November");
+
+        // Выбор дня
+        $(".react-datepicker__day--011").click();
+
         //Subjects
-        //Hobbies
+        $("label[for='hobbies-checkbox-2']").click();
+
         //Picture
         $("#currentAddress").setValue("test currentAddress");
+        //State and City
 
     }
 }
