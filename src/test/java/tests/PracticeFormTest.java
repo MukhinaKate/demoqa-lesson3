@@ -4,10 +4,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.cssClass;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import java.io.File;
+
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class PracticeFormTest {
@@ -42,9 +42,18 @@ public class PracticeFormTest {
         //Subjects
         $("label[for='hobbies-checkbox-2']").click();
 
-        //Picture
+
         $("#currentAddress").setValue("test currentAddress");
+
         //State and City
+        $("#state").click();
+        $x("//*[contains(text(),'Haryana')]").click();
+
+       $("#city").click();
+       $x("//*[contains(text(),'Panipat')]").click();
+
+        //Picture
+        $("#uploadPicture").uploadFile(new File("src/test/resources/testimg.jpg"));
 
     }
 }
