@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 
@@ -18,10 +19,14 @@ public class PracticeFormTest {
         Configuration.pageLoadStrategy = "eager";
         Configuration.holdBrowserOpen = true; //чтобы браузер не закрывался
         Configuration.timeout = 5000; // default 4000
+
     }
     @Test
     void fillFormTest() {
         open("/automation-practice-form");
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
+
         $("#firstName").setValue("Kate");
         $("#lastName").setValue("M");
         $("#userEmail").setValue("test@test.com");
@@ -40,6 +45,7 @@ public class PracticeFormTest {
         $(".react-datepicker__day--011").click();
 
         //Subjects
+        $("#subjectsInput").setValue("Maths").pressEnter();
         $("label[for='hobbies-checkbox-2']").click();
 
 
@@ -54,6 +60,21 @@ public class PracticeFormTest {
 
         //Picture
         $("#uploadPicture").uploadFile(new File("src/test/resources/testimg.jpg"));
+        $("#submit").click();
+
+         //Modal
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Kate M"));
+        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("test@test.com"));
+        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Female"));
+        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("8805700114"));
+        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("11 November,2024"));
+        $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text("Maths"));
+        $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text("Reading"));
+        $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("testimg.jpg"));
+        $(".table-responsive").$(byText("Address")).parent().shouldHave(text("test currentAddress"));
+        $(".table-responsive").$(byText("State and City")).parent().shouldHave(text("Haryana Panipat"));
+        $("#closeLargeModal").click();
 
     }
 }
