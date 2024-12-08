@@ -36,7 +36,7 @@ public class PracticeFormTest {
         //Date of Birth
         $("#dateOfBirthInput").click();
         // Выбор года
-        $(".react-datepicker__year-select").selectOption("2024");
+        $(".react-datepicker__year-select").selectOption("1996");
 
         // Выбор месяца
         $(".react-datepicker__month-select").selectOption("November");
@@ -68,7 +68,7 @@ public class PracticeFormTest {
         $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("test@test.com"));
         $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Female"));
         $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("8805700114"));
-        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("11 November,2024"));
+        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("11 November,1996"));
         $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text("Maths"));
         $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text("Reading"));
         $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("testimg.jpg"));
