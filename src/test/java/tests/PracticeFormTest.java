@@ -17,8 +17,7 @@ public class PracticeFormTest {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true; //чтобы браузер не закрывался
-        Configuration.timeout = 5000; // default 4000
+        Configuration.holdBrowserOpen = false; //чтобы браузер не закрывался
 
     }
     @Test
@@ -59,7 +58,7 @@ public class PracticeFormTest {
        $x("//*[contains(text(),'Panipat')]").click();
 
         //Picture
-        $("#uploadPicture").uploadFile(new File("src/test/resources/testimg.jpg"));
+        $("#uploadPicture").uploadFromClasspath("testimg.jpg");
         $("#submit").click();
 
          //Modal
